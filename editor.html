@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DDS Invitation Editor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<style>
+:root{
+--blue:#0B5FA5;
+--dark:#1C2F4A;
+--orange:#F7931E;
+--green:#4CAF50;
+}
+
+body{background:#f4f6f9;font-family:system-ui;}
+.navbar{background:var(--dark);}
+
+/* TEMPLATE CARD */
+#templateBox{
+width:520px;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+margin:auto;
+text-align:center;
+}
+
+.invite-title{
+font-size:32px;
+font-weight:800;
+color:#b31217;
+}
+
+.invite-name{
+font-size:22px;
+font-weight:700;
+}
+
+.section-head{
+color:var(--blue);
+font-weight:700;
+margin:25px 0 10px;
+}
+</style>
+</head>
+
+<body>
+
+ <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold">DDS Solutions</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="category.html" class="nav-link">Categories</a></li>
+                    <li class="nav-item"><a href="category.html" class="nav-link">Templates</a></li>
+                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="documentation.html" class="nav-link">Documentation</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="container py-4">
+
+<!-- TEMPLATE PREVIEW -->
+<h5 class="text-center section-head">Template Preview</h5>
+
+<div id="templateBox">
+
+<div class="invite-title" id="title">Wedding Invitation</div>
+
+<p>We invite you to celebrate the marriage of</p>
+
+<div class="invite-name" id="groom">Groom Name</div>
+<div>&</div>
+<div class="invite-name" id="bride">Bride Name</div>
+
+<p class="mt-3">
+On <span id="date">24 Feb 2026</span><br>
+At <span id="time">12:30 PM</span>
+</p>
+
+<p id="venue">
+Royal Hall, Pune
+</p>
+
+</div>
+
+<!-- FORM -->
+<h5 class="text-center section-head">Customize Your Invitation</h5>
+
+<div class="row g-3">
+
+<div class="col-md-6">
+<label>Groom Name</label>
+<input class="form-control" oninput="setVal('groom',this.value)">
+</div>
+
+<div class="col-md-6">
+<label>Bride Name</label>
+<input class="form-control" oninput="setVal('bride',this.value)">
+</div>
+
+<div class="col-md-4">
+<label>Date</label>
+<input class="form-control" oninput="setVal('date',this.value)">
+</div>
+
+<div class="col-md-4">
+<label>Time</label>
+<input class="form-control" oninput="setVal('time',this.value)">
+</div>
+
+<div class="col-md-4">
+<label>Title Text</label>
+<input class="form-control" oninput="setVal('title',this.value)">
+</div>
+
+<div class="col-md-12">
+<label>Venue</label>
+<textarea class="form-control"
+oninput="setVal('venue',this.value)"></textarea>
+</div>
+
+</div>
+
+<!-- ACTIONS -->
+<div class="text-center mt-4">
+
+<button class="btn btn-primary px-5" onclick="previewScroll()">
+Preview
+</button>
+
+<button class="btn btn-success px-5 ms-2" onclick="savePNG()">
+Save Image
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function setVal(id,val){
+document.getElementById(id).innerText = val || id;
+}
+
+function previewScroll(){
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function savePNG(){
+html2canvas(document.querySelector("#templateBox"))
+.then(canvas=>{
+let a=document.createElement("a");
+a.download="invitation.png";
+a.href=canvas.toDataURL();
+a.click();
+});
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DDS Documentation Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --blue: #0B5FA5;
+            --dark: #1C2F4A;
+            --orange: #F7931E;
+            --green: #4CAF50;
+        }
+
+        body {
+            background: #f4f6f9;
+            font-family: system-ui;
+        }
+
+        .navbar {
+            background: var(--dark);
+        }
+
+        /* HERO (same as your previous) */
+        .hero {
+            background: linear-gradient(135deg, var(--blue), var(--dark));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        /* SERVICE CARDS */
+        .service-card {
+            position: relative;
+        }
+
+        .price {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--orange);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            transition: .3s;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .15);
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin: 50px 0 20px;
+            text-align: center;
+        }
+
+        .why-card {
+            border-top: 4px solid var(--blue);
+        }
+    </style>
+</head>
+
+<body>
+
+ <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold">DDS Solutions</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="category.html" class="nav-link">Categories</a></li>
+                    <li class="nav-item"><a href="category.html" class="nav-link">Templates</a></li>
+                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="documentation.html" class="nav-link">Documentation</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ✅ HERO (kept separate as requested) -->
+    <section class="hero">
+        <h2>Business & Government Documentation Services</h2>
+        <p>Apply online with expert support</p>
+    </section>
+
+    <!-- ================= CAROUSEL BELOW HERO ================= -->
+
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="https://via.placeholder.com/1400x360" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h4>GST • MSME • Company Setup</h4>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1400x360" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h4>Certificates & Government Services</h4>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1400x360" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h4>Trusted Documentation Support</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ================= WHY CHOOSE ================= -->
+
+        <h3 class="section-title">Why Choose DDS</h3>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card why-card p-4 text-center">
+                    <h5>Expert Guidance</h5>
+                    <p>Correct document handling with professional support.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card why-card p-4 text-center">
+                    <h5>Fast Processing</h5>
+                    <p>Quick submission & follow-up tracking.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card why-card p-4 text-center">
+                    <h5>Affordable Pricing</h5>
+                    <p>Transparent fixed service charges.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= BUSINESS SERVICES ================= -->
+
+        <h3 class="section-title">Business Registration</h3>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card service-card p-4">
+                    <span class="price">₹499</span>
+                    <h5>GST Registration</h5>
+                    <p>New + Amendment + Support</p>
+
+                    <button class="btn btn-outline-primary w-100 mb-2" onclick="showDocs('GST Registration')">
+                        View Details
+                    </button>
+
+                    <a href="apply.html?service=GST" class="btn btn-success w-100">
+                        Apply Now
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card service-card p-4">
+                    <span class="price">₹299</span>
+                    <h5>MSME / Udyam</h5>
+
+                    <button class="btn btn-outline-primary w-100 mb-2" onclick="showDocs('MSME Registration')">
+                        View Details
+                    </button>
+
+                    <a href="apply.html?service=MSME" class="btn btn-success w-100">
+                        Apply Now
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card service-card p-4">
+                    <span class="price">₹999</span>
+                    <h5>Company Registration</h5>
+
+                    <button class="btn btn-outline-primary w-100 mb-2" onclick="showDocs('Company Registration')">
+                        View Details
+                    </button>
+
+                    <a href="apply.html?service=Company" class="btn btn-success w-100">
+                        Apply Now
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= CERTIFICATES ================= -->
+
+        <h3 class="section-title">Certificates</h3>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card service-card p-4">
+                    <span class="price">₹199</span>
+                    <h5>Income Certificate</h5>
+                    <button class="btn btn-outline-primary w-100 mb-2" onclick="showDocs('Income Certificate')">View
+                        Details</button>
+                    <a href="apply.html?service=Income" class="btn btn-success w-100">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card service-card p-4">
+                    <span class="price">₹199</span>
+                    <h5>Domicile Certificate</h5>
+                    <button class="btn btn-outline-primary w-100 mb-2" onclick="showDocs('Domicile Certificate')">View
+                        Details</button>
+                    <a href="apply.html?service=Domicile" class="btn btn-success w-100">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card service-card p-4">
+                    <span class="price">₹199</span>
+                    <h5>Caste Certificate</h5>
+                    <button class="btn btn-outline-primary w-100 mb-2" onclick="showDocs('Caste Certificate')">View
+                        Details</button>
+                    <a href="apply.html?service=Caste" class="btn btn-success w-100">Apply Now</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= MODAL ================= -->
+
+    <div class="modal fade" id="docModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="docTitle"></h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>Aadhar Card</li>
+                        <li>Address Proof</li>
+                        <li>Photo</li>
+                        <li>Mobile Number</li>
+                        <li>Email ID</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ================= ISSUED DOCUMENTS PORTFOLIO ================= -->
+<div class="container">
+    <h3 class="section-title">Recently Issued Documents</h3>
+
+    <div class="row g-4">
+
+        <!-- DOC -->
+        <div class="col-md-3">
+            <div class="card p-2 text-center shadow-sm">
+                <img src="docs/doc1.jpg" class="img-fluid rounded" style="cursor:pointer" onclick="showDoc(this.src)">
+                <small class="mt-2">
+                    GST Certificate — M/s Shree Traders
+                </small>
+            </div>
+        </div>
+
+        <!-- DOC -->
+        <div class="col-md-3">
+            <div class="card p-2 text-center shadow-sm">
+                <img src="docs/doc2.jpg" class="img-fluid rounded" style="cursor:pointer" onclick="showDoc(this.src)">
+                <small class="mt-2">
+                    MSME Registration — ABC Enterprises
+                </small>
+            </div>
+        </div>
+
+        <!-- DOC -->
+        <div class="col-md-3">
+            <div class="card p-2 text-center shadow-sm">
+                <img src="docs/doc3.jpg" class="img-fluid rounded" style="cursor:pointer" onclick="showDoc(this.src)">
+                <small class="mt-2">
+                    Income Certificate — Client Work
+                </small>
+            </div>
+        </div>
+
+        <!-- DOC -->
+        <div class="col-md-3">
+            <div class="card p-2 text-center shadow-sm">
+                <img src="docs/doc4.jpg" class="img-fluid rounded" style="cursor:pointer" onclick="showDoc(this.src)">
+                <small class="mt-2">
+                    Shop Act License — XYZ Stores
+                </small>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <!-- ================= TESTIMONIALS ================= -->
+    <div class="container">
+        <h3 class="section-title">What Our Clients Say</h3>
+
+        <div class="row g-4 mb-5">
+
+            <div class="col-md-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-flex 
+justify-content-center align-items-center" style="width:48px;height:48px;">RK</div>
+                        <div class="ms-3">
+                            <strong>Rahul Kale</strong><br>
+                            <small class="text-muted">GST Registration</small>
+                        </div>
+                    </div>
+
+                    <p>
+                        Very smooth GST registration process. DDS handled all documents
+                        and updates without confusion.
+                    </p>
+
+                    <div class="text-warning">★★★★★</div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-success text-white rounded-circle d-flex 
+justify-content-center align-items-center" style="width:48px;height:48px;">SP</div>
+                        <div class="ms-3">
+                            <strong>Sneha Patil</strong><br>
+                            <small class="text-muted">Income Certificate</small>
+                        </div>
+                    </div>
+
+                    <p>
+                        Fast service and proper guidance. My certificate work completed
+                        faster than expected.
+                    </p>
+
+                    <div class="text-warning">★★★★★</div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-warning text-white rounded-circle d-flex 
+justify-content-center align-items-center" style="width:48px;height:48px;">AM</div>
+                        <div class="ms-3">
+                            <strong>Amit More</strong><br>
+                            <small class="text-muted">MSME Registration</small>
+                        </div>
+                    </div>
+
+                    <p>
+                        Affordable and professional documentation support. Highly recommended.
+                    </p>
+
+                    <div class="text-warning">★★★★☆</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function showDocs(name) {
+            docTitle.innerText = name + " — Required Documents";
+            new bootstrap.Modal(docModal).show();
+        }
+    </script>
+    <!-- DOCUMENT IMAGE MODAL -->
+<div class="modal fade" id="docImgModal">
+<div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-body text-center">
+<img id="docPreview" class="img-fluid rounded">
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function showDoc(src){
+docPreview.src = src;
+new bootstrap.Modal(docImgModal).show();
+}
+</script>
+
+
+</body>
+
+</html>

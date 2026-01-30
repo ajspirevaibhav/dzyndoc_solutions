@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DDS Template Editor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<style>
+:root{
+--blue:#0B5FA5;
+--dark:#1C2F4A;
+--orange:#F7931E;
+}
+
+body{background:#eef2f7;font-family:system-ui;}
+
+.navbar{background:var(--dark);}
+
+/* CANVAS */
+#canvas{
+width:700px;
+height:500px;
+background:white;
+border-radius:12px;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+position:relative;
+overflow:hidden;
+margin:auto;
+}
+
+/* Editable Text */
+.edit-text{
+position:absolute;
+cursor:move;
+font-weight:700;
+}
+
+#t1{top:60px;left:60px;font-size:32px;}
+#t2{top:130px;left:60px;font-size:20px;}
+#t3{top:200px;left:60px;font-size:16px;width:500px;}
+
+</style>
+</head>
+
+<body>
+
+ <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold">DDS Solutions</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="category.html" class="nav-link">Categories</a></li>
+                    <li class="nav-item"><a href="category.html" class="nav-link">Templates</a></li>
+                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="documentation.html" class="nav-link">Documentation</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container py-4">
+
+<div class="row">
+
+<!-- LEFT CONTROLS -->
+<div class="col-md-3">
+
+<h5>Text Controls</h5>
+
+<input class="form-control mb-2" placeholder="Title"
+oninput="setText('t1',this.value)">
+
+<input class="form-control mb-2" placeholder="Subtitle"
+oninput="setText('t2',this.value)">
+
+<textarea class="form-control mb-3" placeholder="Body"
+oninput="setText('t3',this.value)"></textarea>
+
+<label>Text Color</label>
+<input type="color" class="form-control form-control-color mb-3"
+oninput="setColor(this.value)">
+
+<h5>Image</h5>
+<input type="file" class="form-control mb-3"
+onchange="loadImg(event)">
+
+<button class="btn btn-success w-100 mb-2" onclick="downloadPNG()">
+Export PNG
+</button>
+
+</div>
+
+<!-- RIGHT CANVAS -->
+<div class="col-md-9 text-center">
+
+<div id="canvas">
+
+<img id="bg"
+src="https://via.placeholder.com/700x500"
+style="width:100%;height:100%;object-fit:cover">
+
+<div id="t1" class="edit-text">Your Title</div>
+<div id="t2" class="edit-text">Subtitle Here</div>
+<div id="t3" class="edit-text">
+Description text goes here
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+/* TEXT UPDATE */
+function setText(id,val){
+document.getElementById(id).innerText = val;
+}
+
+/* COLOR */
+function setColor(c){
+document.querySelectorAll('.edit-text')
+.forEach(t=>t.style.color=c);
+}
+
+/* IMAGE LOAD */
+function loadImg(e){
+const reader=new FileReader();
+reader.onload=function(){
+document.getElementById('bg').src=reader.result;
+}
+reader.readAsDataURL(e.target.files[0]);
+}
+
+/* EXPORT PNG */
+function downloadPNG(){
+html2canvas(document.querySelector("#canvas"))
+.then(canvas=>{
+let a=document.createElement("a");
+a.download="design.png";
+a.href=canvas.toDataURL();
+a.click();
+});
+}
+
+/* DRAG SYSTEM */
+document.querySelectorAll('.edit-text').forEach(el=>{
+el.onmousedown=function(e){
+let x=e.offsetX,y=e.offsetY;
+function move(ev){
+el.style.left = (ev.pageX - x)+"px";
+el.style.top = (ev.pageY - y)+"px";
+}
+document.addEventListener('mousemove',move);
+document.onmouseup=()=>document.removeEventListener('mousemove',move);
+}
+});
+
+</script>
+
+</body>
+</html>

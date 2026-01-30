@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio — Dzyndoc Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+:root{
+--blue:#0B5FA5;
+--dark:#1C2F4A;
+--orange:#F7931E;
+}
+
+body{background:#f5f7fa;font-family:system-ui;}
+.navbar{background:var(--dark);}
+
+.hero{
+background:linear-gradient(135deg,var(--blue),var(--dark));
+color:white;
+padding:60px 20px;
+text-align:center;
+}
+
+.section-title{
+font-weight:700;
+margin:50px 0 25px;
+text-align:center;
+}
+
+.port-card{
+overflow:hidden;
+border-radius:12px;
+}
+
+.port-card img{
+transition:.4s;
+}
+
+.port-card:hover img{
+transform:scale(1.08);
+}
+
+.badge-brand{
+background:var(--orange);
+}
+
+.project-card{
+position:relative;
+}
+
+.project-tag{
+position:absolute;
+top:10px;
+left:10px;
+background:black;
+color:white;
+padding:4px 10px;
+border-radius:8px;
+font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+ <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold">DDS Solutions</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="category.html" class="nav-link">Categories</a></li>
+                    <li class="nav-item"><a href="category.html" class="nav-link">Templates</a></li>
+                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="documentation.html" class="nav-link">Documentation</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- HERO -->
+<section class="hero">
+<h2>Our Portfolio</h2>
+<p>Customized Designs & Branding Projects</p>
+</section>
+
+<div class="container">
+
+<!-- ================= CUSTOM DESIGNS ================= -->
+
+<h3 class="section-title">Customized Designs</h3>
+
+<div class="row g-4">
+
+<!-- DESIGN CARD -->
+<div class="col-md-3">
+<div class="card port-card">
+<img src="https://via.placeholder.com/400x300" class="img-fluid">
+<div class="card-body">
+<h6>Logo Design</h6>
+<span class="badge badge-brand">Custom</span>
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card port-card">
+<img src="https://via.placeholder.com/400x300">
+<div class="card-body">
+<h6>Wedding Invite</h6>
+<span class="badge badge-brand">Editable</span>
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card port-card">
+<img src="https://via.placeholder.com/400x300">
+<div class="card-body">
+<h6>Business Poster</h6>
+<span class="badge badge-brand">Client Work</span>
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card port-card">
+<img src="https://via.placeholder.com/400x300">
+<div class="card-body">
+<h6>Social Media Post</h6>
+<span class="badge badge-brand">Campaign</span>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ================= PROJECTS ================= -->
+
+<h3 class="section-title">Branding & Project Works</h3>
+
+<div class="row g-4">
+
+<!-- PROJECT -->
+<div class="col-md-4">
+<div class="card project-card">
+<span class="project-tag">Full Branding</span>
+<img src="https://via.placeholder.com/600x350">
+
+<div class="card-body">
+<h5>ABC Traders Branding</h5>
+<p>
+Logo + Visiting Card + Letterhead + Social Kit
+</p>
+
+<a href="project.html" class="btn btn-primary">
+View Project
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- PROJECT -->
+<div class="col-md-4">
+<div class="card project-card">
+<span class="project-tag">Business Setup</span>
+<img src="https://via.placeholder.com/600x350">
+
+<div class="card-body">
+<h5>Restaurant Brand Kit</h5>
+<p>
+Menu + Posters + Online Branding
+</p>
+
+<a href="project.html" class="btn btn-primary">
+View Project
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- PROJECT -->
+<div class="col-md-4">
+<div class="card project-card">
+<span class="project-tag">Digital Kit</span>
+<img src="https://via.placeholder.com/600x350">
+
+<div class="card-body">
+<h5>Startup Launch Pack</h5>
+<p>
+Logo + Website + Social Templates
+</p>
+
+<a href="project.html" class="btn btn-primary">
+View Project
+</a>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="text-center my-5 text-muted">
+© Dzyndoc Solutions Portfolio
+</div>
+
+</div>
+
+</body>
+</html>
