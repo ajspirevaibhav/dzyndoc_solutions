@@ -9,159 +9,241 @@
 
 <style>
 :root{
---blue:#0B5FA5;
---dark:#1C2F4A;
---orange:#F7931E;
+  --blue:#0B5FA5;
+  --dark:#1C2F4A;
+  --orange:#F7931E;
 }
 
-body{background:#f5f7fa;font-family:system-ui;}
-.navbar{background:var(--dark);}
+body{
+  background:#f5f7fa;
+  font-family:system-ui;
+}
 
+.navbar{
+  background:var(--dark);
+}
+
+/* FILTER */
 .filter-btn{
-border:1px solid var(--blue);
-color:var(--blue);
-margin:5px;
+  border:1px solid var(--blue);
+  color:var(--blue);
+  margin:5px;
 }
-.filter-btn.active,.filter-btn:hover{
-background:var(--blue);
-color:white;
-}
-
-.template-card{position:relative;}
-.price{
-position:absolute;
-top:10px;
-right:10px;
-background:var(--orange);
-color:white;
-padding:4px 8px;
-border-radius:8px;
-font-size:13px;
-font-weight:600;
+.filter-btn.active,
+.filter-btn:hover{
+  background:var(--blue);
+  color:white;
 }
 
+/* CARD */
+.template-card{
+  transition:.3s;
+  border-radius:12px;
+  overflow:hidden;
+}
 .template-card:hover{
-transform:translateY(-6px);
-transition:.3s;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
+  transform:translateY(-6px);
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.card img{
+  height:200px;
+  object-fit:cover;
+}
+
+.price-badge{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:var(--orange);
+  color:white;
+  padding:4px 10px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.template-tag{
+  font-size:12px;
+  color:#666;
+}
+
+/* MODAL */
+.modal-bg{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.modal-box{
+  background:white;
+  padding:20px;
+  width:320px;
+  border-radius:12px;
+}
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
+  border:1px solid #eee;
+  border-radius:8px;
+  margin-bottom:8px;
+}
+.price-row.highlight{
+  border-color:var(--orange);
+  background:#fff4e6;
 }
 </style>
 </head>
 
-<body>
+<body style="background-image: url(assets/img/silver-floral-pattern-background_53876-118841.jpg);">
 
- <!-- NAV -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold">DDS Solutions</a>
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold">DDS Solutions</a>
+  </div>
+</nav>
 
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="category.html" class="nav-link">Categories</a></li>
-                    <li class="nav-item"><a href="category.html" class="nav-link">Templates</a></li>
-                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="documentation.html" class="nav-link">Documentation</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+<!-- FILTER -->
 <div class="container text-center mt-4">
-<h2>Browse Templates</h2>
-
-<button class="btn filter-btn active" onclick="f('all',this)">All</button>
-<button class="btn filter-btn" onclick="f('wedding',this)">Wedding</button>
-<button class="btn filter-btn" onclick="f('birthday',this)">Birthday</button>
-<button class="btn filter-btn" onclick="f('business',this)">Business</button>
-<button class="btn filter-btn" onclick="f('certificate',this)">Certificates</button>
+  <h2>Browse Templates</h2>
+  <button class="btn filter-btn active" onclick="filterCat('all',this)">All</button>
+  <button class="btn filter-btn" onclick="filterCat('wedding',this)">Wedding</button>
+  <button class="btn filter-btn" onclick="filterCat('birthday',this)">Birthday</button>
+  <button class="btn filter-btn" onclick="filterCat('business',this)">Business</button>
+  <button class="btn filter-btn" onclick="filterCat('certificate',this)">Certificates</button>
 </div>
 
+<!-- GRID -->
 <div class="container py-4">
-<div class="row g-4">
-
-<!-- ===== WEDDING 8 ===== -->
-<script>
-for(let i=1;i<=8;i++){
-document.write(`
-<div class="col-md-3 template wedding">
-<div class="card template-card">
-<span class="price">₹${40+i*5}</span>
-<img src="https://via.placeholder.com/400x260">
-<div class="card-body">
-<h6>Wedding Template ${i}</h6>
-<button class="btn btn-sm btn-primary">Preview</button>
-<button class="btn btn-sm btn-warning">Edit</button>
-</div></div></div>`);
-}
-</script>
-
-<!-- ===== BIRTHDAY 8 ===== -->
-<script>
-for(let i=1;i<=8;i++){
-document.write(`
-<div class="col-md-3 template birthday">
-<div class="card template-card">
-<span class="price">₹${20+i*4}</span>
-<img src="https://via.placeholder.com/400x260">
-<div class="card-body">
-<h6>Birthday Template ${i}</h6>
-<button class="btn btn-sm btn-primary">Preview</button>
-<button class="btn btn-sm btn-warning">Edit</button>
-</div></div></div>`);
-}
-</script>
-
-<!-- ===== BUSINESS 8 ===== -->
-<script>
-for(let i=1;i<=8;i++){
-document.write(`
-<div class="col-md-3 template business">
-<div class="card template-card">
-<span class="price">₹${50+i*6}</span>
-<img src="https://via.placeholder.com/400x260">
-<div class="card-body">
-<h6>Business Template ${i}</h6>
-<button class="btn btn-sm btn-primary">Preview</button>
-<button class="btn btn-sm btn-warning">Edit</button>
-</div></div></div>`);
-}
-</script>
-
-<!-- ===== CERTIFICATE 8 ===== -->
-<script>
-for(let i=1;i<=8;i++){
-document.write(`
-<div class="col-md-3 template certificate">
-<div class="card template-card">
-<span class="price">₹${30+i*3}</span>
-<img src="https://via.placeholder.com/400x260">
-<div class="card-body">
-<h6>Certificate Template ${i}</h6>
-<button class="btn btn-sm btn-primary">Preview</button>
-<button class="btn btn-sm btn-warning">Edit</button>
-</div></div></div>`);
-}
-</script>
-
+  <div class="row g-4" id="templateGrid"></div>
 </div>
+
+<!-- PRICING MODAL -->
+<div class="modal-bg" id="pricingModal">
+  <div class="modal-box">
+    <h5 class="mb-3">Choose Download Option</h5>
+
+    <div class="price-row">
+      <span>Free (Low Quality)</span>
+      <strong id="pFree">₹0</strong>
+    </div>
+
+    <div class="price-row">
+      <span>Premium (HD)</span>
+      <strong id="pPremium">₹10</strong>
+    </div>
+
+    <div class="price-row highlight">
+      <span>Premium + Photo</span>
+      <strong id="pPhoto">₹15</strong>
+    </div>
+
+    <button class="btn btn-warning w-100 mt-2">
+      Proceed to Payment
+    </button>
+
+    <button class="btn btn-light w-100 mt-2" onclick="closePricing()">
+      Cancel
+    </button>
+  </div>
 </div>
 
 <script>
-function f(cat,btn){
-document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
+/* ===== TEMPLATE DATA ===== */
+const templates = [];
 
-document.querySelectorAll('.template').forEach(c=>{
-c.style.display = (cat==='all'||c.classList.contains(cat)) ? 'block':'none';
+["wedding","birthday","business","certificate"].forEach(cat=>{
+  for(let i=1;i<=8;i++){
+    templates.push({
+      cat: cat,
+      title: `${cat} Template ${i}`
+    });
+  }
 });
+
+/* ===== RENDER CARDS ===== */
+const grid = document.getElementById("templateGrid");
+
+templates.forEach(t => {
+  grid.innerHTML += `
+    <div class="col-md-3 template ${t.cat}">
+      <div class="card template-card position-relative">
+
+        <span class="price-badge priceBadge">From ₹10</span>
+
+        <img src="assets/img/demo-template.jpg" alt="Template Preview">
+
+        <div class="card-body">
+          <h6 class="mb-1 text-capitalize">${t.title}</h6>
+          <div class="template-tag mb-2">
+            Free • Premium Available
+          </div>
+
+          <button class="btn btn-sm btn-primary">Preview</button>
+          <button class="btn btn-sm btn-warning" onclick="openPricing()">
+            Use Template
+          </button>
+        </div>
+
+      </div>
+    </div>
+  `;
+});
+
+/* ===== FILTER ===== */
+function filterCat(cat,btn){
+  document.querySelectorAll('.filter-btn')
+    .forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.template').forEach(c=>{
+    c.style.display =
+      (cat==="all" || c.classList.contains(cat))
+      ? "block"
+      : "none";
+  });
 }
+
+/* ===== MODAL ===== */
+function openPricing(){
+  document.getElementById("pricingModal").style.display="flex";
+}
+function closePricing(){
+  document.getElementById("pricingModal").style.display="none";
+}
+
+/* ===== INR / USD PRICING ===== */
+const priceINR = {
+  badge:"From ₹10",
+  free:"₹0",
+  premium:"₹10",
+  photo:"₹15"
+};
+const priceUSD = {
+  badge:"From $0.49",
+  free:"$0",
+  premium:"$0.49",
+  photo:"$0.99"
+};
+
+fetch("https://ipapi.co/json/")
+.then(res=>res.json())
+.then(data=>{
+  const p = (data.country==="IN") ? priceINR : priceUSD;
+
+  document.querySelectorAll(".priceBadge")
+    .forEach(b=>b.innerText=p.badge);
+
+  pFree.innerText = p.free;
+  pPremium.innerText = p.premium;
+  pPhoto.innerText = p.photo;
+})
+.catch(()=>{});
 </script>
 
 </body>
